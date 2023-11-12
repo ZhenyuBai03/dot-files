@@ -1,0 +1,69 @@
+-- plugins/telescope.lua:
+
+return {
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    lazy = false,
+    config = function()
+      local telescope = require("telescope")
+      local builtin = require("telescope.builtin")
+
+      telescope.setup({})
+
+      local wk = require('which-key')
+      wk.register({
+        ['<leader>'] = {
+          ['<leader>'] = { '<cmd>Telescope find_files<cr>', 'Find files' },
+          [','] = { '<cmd>Telescope buffers<cr>', 'Change buffer' },
+          ['.'] = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", "File browser" },
+          ['/'] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search buffer" },
+        },
+        ['<leader>f'] = {
+          f = { "<cmd>Telescope find_files<cr>", "Find file" },
+          b = { "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", "File browser" },
+          s = { '<cmd>Telescope live_grep<cr>', 'Search files' },
+          r = { "<cmd>Telescope oldfiles<cr>", "Search recent" },
+        },
+        ['<leader>h'] = {
+          h = { '<cmd>Telescope help_tags<cr>', 'Help' },
+          x = { '<cmd>Telescope commands<cr>', 'Commands' },
+          k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
+          o = { '<cmd>Telescop vim_options<cr>', 'Options' },
+        },
+        ['<leader>g'] = {
+          f = { '<cmd>Telescope git_files<cr>', 'Git files' },
+          b = { '<cmd>Telescope git_branches<cr>', 'Git branches' },
+        },
+        ['<leader>s'] = {
+          f = { '<cmd>Telescope live_grep<cr>', 'Search files (grep)' },
+          g = { '<cmd>Telescope git_files<cr>', 'Search files (git)' },
+          w = { function() builtin.grep_string({ search = vim.fn.input("Search Word: ") }) end, 'Search word' },
+          r = { "<cmd>Telescope oldfiles<cr>", "Search recent" },
+          d = { "<cmd>Telescope diagnostics<cr>", "Search diagnostics" },
+          b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search buffer" },
+        },
+      })
+    end,
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' }
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    event = "VeryLazy",
+    config = function()
+      local fb_actions = require "telescope._extensions.file_browser.actions"
+      require('telescope').setup {
+        extensions = {
+          file_browser = {
+            mappings = {
+              ["i"] = {
+                ["<c-r>"] = fb_actions.rename,
+              },
+            },
+          },
+        },
+      }
+      require("telescope").load_extension "file_browser"
+    end,
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
+}
