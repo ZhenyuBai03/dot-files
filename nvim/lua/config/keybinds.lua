@@ -20,11 +20,11 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 -- window
 vim.keymap.set("n", "<leader>ww", "<c-w>p", { desc = "Swap window" })
 vim.keymap.set("n", "<leader>wq", "<c-w>c", { desc = "Quit window" })
-vim.keymap.set("n", "<leader>w-", "<c-w>s", { desc = "Split window below" })
+vim.keymap.set("n", "<leader>w_", "<c-w>s", { desc = "Split window below" })
 vim.keymap.set("n", "<leader>w^", "<c-w>v", { desc = "Split window right" })
-vim.keymap.set("n", "<leader>-", "<c-w>s", { desc = "Split window below" })
-vim.keymap.set("n", "<leader>^", "<c-w>v", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>w=", "<c-w>=", { desc = "Equalize width and height" })
+vim.keymap.set("n", "<leader>w-", "<c-w>-", { desc = "decrease current window size" })
+vim.keymap.set("n", "<leader>w;", "<c-w>+", { desc = "increase current window size" })
 
 -- tab
 vim.keymap.set("n", "<C-t>", "<cmd>tabnew<cr>", { desc = "new tab" })
@@ -34,7 +34,10 @@ vim.keymap.set("n", "<C-n>", "<cmd>tabnext<cr>", { desc = "switch tab" })
 
 -- terminal
 vim.keymap.set("n", "<leader>t", "<cmd>terminal<cr>", { desc = "open terminal" })
-
+vim.keymap.set("n", "<C-w>", "<cmd>sp <cr> <cmd>term python3<cr>")
+vim.keymap.set("n", "<C-e>", "<cmd>bd! <cr>")
 -- neotree
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree<cr>', { desc = 'Neo-tree' })
+
+
 
