@@ -1,10 +1,12 @@
--- Plugins --
--- hardtime?
--- project.nvim?
--- lualine?
--- toggleterm
--- mason-dap
--- dap
--- undotree
-require('config')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
+return {
+  { "catppuccin/nvim" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
+}
 

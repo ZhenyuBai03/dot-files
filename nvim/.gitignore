@@ -1,6 +1,8 @@
-tags
-test.sh
-.luarc.json
-nvim
-.DS_Store
-../nvim/lua/plugins/.DS_Store
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
