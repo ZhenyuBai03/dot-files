@@ -23,7 +23,7 @@ local function text_before_cursor(args, _)
   return line:sub(1, col)
 end
 
-ls.add_snippets("vimwiki", {
+ls.add_snippets("tex", {
   s("mk", {
     t("$"),
     i(1),
