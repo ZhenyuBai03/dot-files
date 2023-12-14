@@ -33,11 +33,14 @@ map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>w\\", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>\\", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>wp", "<cmd>sp <cr> <cmd>term python3<cr>", {})
+map("n", "<leader>wp", "<cmd>sp <cr> <cmd>term python3<cr>", { desc = "open python terminal bottom" })
 map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+
+-- directory finders
+map("n", "<leader>fa", "<cmd>!open .<cr>", { desc = "open finder" })
 
 -- tabs
 map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
@@ -59,3 +62,11 @@ map("n", "<leader>vs", "<cmd>VimwikiUISelect<cr>", { desc = "select and open", r
 map("n", "<leader>vd", "<cmd>VimwikiDeleteFile<cr>", { desc = "delete vimwiki file", remap = true })
 map("n", "<leader>vr", "<cmd>VimwikiRenameFile<cr>", { desc = "rename vimwiki file", remap = true })
 map("n", "<leader>va", "<cmd>VimwikiTOC<cr>", { desc = "create Table of Content", remap = true })
+map("n", "<leader>cp", "<cmd>VimwikiToggleListItem<cr>", { desc = "toggle list item", remap = true })
+
+-- copilot
+vim.keymap.set("i", "<C-1>", 'copilot#Accept("<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+})
+vim.g.copilot_no_tab_map = true

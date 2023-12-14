@@ -4,4 +4,4 @@
 --
 
 local opt = vim.opt
-opt.digraph = true
+-- opt.digraph = true

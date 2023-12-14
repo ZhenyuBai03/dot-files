@@ -4,6 +4,7 @@ return {
     init = function()
       vim.g.vimwiki_list = {
         {
+          vimwiki_listsyms = "✗○◐●✓",
           path = "~/wiki/vimwiki/",
           syntax = "default",
           ext = ".wiki",
@@ -11,7 +12,6 @@ return {
           template_default = "default_tmp",
           template_ext = ".html",
           auto_toc = 1,
-          vimwiki_listsyms = "✗○◐●✓",
         },
       }
     end,
