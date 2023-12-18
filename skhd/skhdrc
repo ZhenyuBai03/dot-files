@@ -1,23 +1,48 @@
 # -- Changing Window Focus --
-
 # change window focus within space
-shift + ctrl - j : yabai -m window --focus south
-shift + ctrl - k : yabai -m window --focus north
-shift + ctrl - h : yabai -m window --focus west
-shift + ctrl - l : yabai -m window --focus east
+shift + ctrl - j : yabai -m window --focus south || yabai -m display --focus south
+shift + ctrl - k : yabai -m window --focus north || yabai -m display --focus north
+shift + ctrl - h : yabai -m window --focus west  || yabai -m display --focus west
+shift + ctrl - l : yabai -m window --focus east  || yabai -m display --focus east
 
 # -- Modifying the Layout --
 
 # rotate layout clockwise
-shift + alt - r : yabai -m space --rotate 270
+alt - r         : yabai -m space --rotate 270
+shift + alt - r : yabai -m space --rotate 90
 
-# increase window size(よく使う)
-shift + alt - z : yabai -m window --resize left:-20:0
-shift + alt - x : yabai -m window --resize right:20:0
-shift + alt - s : yabai -m window --resize bottom:0:20
-shift + alt - w : yabai -m window --resize top:0:-20
+# Resize windows
+lctrl + alt - h : yabai -m window --resize left:-50:0; \
+                  yabai -m window --resize right:-50:0
+lctrl + alt - j : yabai -m window --resize bottom:0:50; \
+                  yabai -m window --resize top:0:50
+lctrl + alt - k : yabai -m window --resize top:0:-50; \
+                  yabai -m window --resize bottom:0:-50
+lctrl + alt - l : yabai -m window --resize right:50:0; \
+                  yabai -m window --resize left:50:0
+
+# Rotate on X and Y Axis
+shift + alt - x : yabai -m space --mirror x-axis
+shift + alt - y : yabai -m space --mirror y-axis
+
+# Equalize size of windows
+lctrl + alt - e : yabai -m space --balance
+
 # -- Starting/Stopping/Restarting Yabai --
-
-# stop/start/restart yabai
 ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
+
+# Moving windows
+shift + alt - h : yabai -m window --warp west   || (yabai -m window --display west   &&  yabai -m display --focus west  )
+shift + alt - j : yabai -m window --warp south  || (yabai -m window --display south  &&  yabai -m display --focus south )
+shift + alt - k : yabai -m window --warp north  || (yabai -m window --display north  &&   yabai -m display --focus north)
+shift + alt - l : yabai -m window --warp east   || (yabai -m window --display east   &&   yabai -m display --focus east )
+
+
+alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
+
+# Commands App
+#alt - return : "${HOME}"/.config/yabai/scripts/open_iterm2.sh
+alt - return : open -a "iTerm"
+ctrl - return : open -a "sioyek"
+

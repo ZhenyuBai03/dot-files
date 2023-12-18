@@ -14,10 +14,10 @@ vim.keymap.del("n", "<leader>wd")
 del("n", "<leader>L")
 
 -- Resize window using <option> arrow keys
-map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<A-Right>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<A-Left>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<A-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<A-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<A-S-Right>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<A-S-Left>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
