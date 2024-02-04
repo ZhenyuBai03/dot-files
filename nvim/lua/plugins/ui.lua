@@ -3,14 +3,6 @@ return {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     opts = function()
-      -- local logo = [[
-      --   ██████╗  █████╗ ███╗   ██╗██╗███████╗██╗    ██╗   ██╗██╗███╗   ███╗
-      --             ██╔══██╗██╔══██╗████╗  ██║██║██╔════╝██║    ██║   ██║██║████╗ ████║        z
-      --         ██║  ██║███████║██╔██╗ ██║██║█████╗  ██║    ██║   ██║██║██╔████╔██║     z
-      --       ██║  ██║██╔══██║██║╚██╗██║██║██╔══╝  ██║    ╚██╗ ██╔╝██║██║╚██╔╝██║  z
-      --   ██████╔╝██║  ██║██║ ╚████║██║███████╗███████╗╚████╔╝ ██║██║ ╚═╝ ██║
-      --     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚══════╝ ╚═══╝  ╚═╝╚═╝     ╚═╝
-      --   ]]
       local logo = [[
       ██╗  ██╗██╗    ██████╗  █████╗ ███╗   ██╗██╗███████╗██╗     
       ██║  ██║██║    ██╔══██╗██╔══██╗████╗  ██║██║██╔════╝██║     
@@ -114,9 +106,40 @@ return {
     },
   },
   {
-    "LazyVim/LazyVim",
+    "dasupradyumna/midnight.nvim",
+    lazy = false,
+    priority = 1000,
     opts = {
-      colorscheme = "catppuccin",
+      integrations = {
+        dashboard = true,
+      },
     },
+    config = function()
+      require("midnight").setup({
+        HighlightGroup = {
+          bg = "Black",
+        },
+      })
+      vim.cmd("colorscheme catppuccin")
+      vim.cmd("colorscheme midnight")
+    end,
   },
+  --{
+  --  "projekt0n/github-nvim-theme",
+  --  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --  priority = 1000, -- make sure to load this before all the other start plugins
+  --  config = function()
+  --    require("github-theme").setup({
+  --      -- ...
+  --    })
+
+  --    vim.cmd("colorscheme github_dark_high_contrast")
+  --  end,
+  --},
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "midnight",
+  --   },
+  -- },
 }

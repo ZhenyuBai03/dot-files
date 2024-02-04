@@ -15,5 +15,6 @@ return {
         never_show = {},
       },
     },
+    bind_to_cwd = false,
   },
 }
